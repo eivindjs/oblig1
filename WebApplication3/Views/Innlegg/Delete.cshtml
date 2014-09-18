@@ -1,0 +1,56 @@
+﻿@model WebApplication3.Models.Innlegg
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Er du sikker på at du vil fjerne dette innlegget?</h3>
+<div>
+    <h4>Innlegg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Blogg")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blogger.Blogg_tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tittel")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Innlegg_Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tekst")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Innlegg_Tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Dato")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dato)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett Innlegg" class="btn btn-default" /> |
+            @Html.ActionLink("Tilbake", "InnleggIndex", new { id = ViewBag.innleggId })
+        </div>
+    }
+</div>

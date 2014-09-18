@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication3.Models.Kommentar>
+
+@{
+    ViewBag.Title = "Kommentar";
+}
+
+<h2>KommentarIndex</h2>
+
+<p>
+    @Html.ActionLink("Kommenter", "Create", new { id = ViewBag.innleggId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.innlegg.Innlegg_Tittel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kommentar_Tittel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kommentar_tekst)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.innlegg.Innlegg_Tittel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kommentar_Tittel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kommentar_tekst)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "Edit", new { id=item.Kom_id }) |
+            @Html.ActionLink("Slett", "Delete", new { id=item.Kom_id })
+        </td>
+    </tr>
+}
+
+</table>

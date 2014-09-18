@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication3.Models.Innlegg>
+
+@{
+    ViewBag.Title = "Innlegg";
+}
+
+<h2>InnleggIndex</h2>
+
+<p>
+    @Html.ActionLink("Opprett ny", "Opprett", new { id = ViewBag.bloggId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Blogg")
+        </th>
+        <th>
+            @Html.DisplayName("Tittel")
+        </th>
+        <th>
+            @Html.DisplayName("Tekst")
+        </th>
+        <th>
+            @Html.DisplayName("Dato")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blogger.Blogg_tekst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Innlegg_Tittel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Innlegg_Tekst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dato)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "Edit", new { id=item.Innlegg_Id }) |
+            @Html.ActionLink("Se Innlegg", "KommentarIndex", "Kommentar", new { id=item.Innlegg_Id }, null) |
+            @Html.ActionLink("Slett", "Delete", new { id=item.Innlegg_Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

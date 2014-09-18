@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication3.Models.Blogg>
+
+@{
+    ViewBag.Title = "Velkommen til bloggene";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Lag ny", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Blogg")
+        </th>
+        <th>
+            @Html.DisplayName("Dato")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blogg_tekst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dato.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "Edit", new { id=item.Blogg_Id }) |
+            @Html.ActionLink("Se Blogg", "InnleggIndex", "Innlegg", new { id=item.Blogg_Id }, null) |
+            @Html.ActionLink("Slett", "Delete", new { id=item.Blogg_Id })
+        </td>
+    </tr>
+}
+
+</table>
