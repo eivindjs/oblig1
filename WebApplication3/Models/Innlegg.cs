@@ -15,8 +15,9 @@ namespace WebApplication3.Models
         public string Innlegg_Tittel { get; set; }
         public string Innlegg_Tekst { get; set; }
         public DateTime Dato { get; set; }
+       
+        
         public int Blogg_Id { get; set; }
-
         public virtual Blogg Blogger { get; set; }
         public virtual List<Kommentar> kommentarer { get; set; }
     }

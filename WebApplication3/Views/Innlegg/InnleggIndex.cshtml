@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayName("Dato")
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -40,6 +40,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Dato)
         </td>
+       
         <td>
             @Html.ActionLink("Endre", "Edit", new { id=item.Innlegg_Id }) |
             @Html.ActionLink("Se Innlegg", "KommentarIndex", "Kommentar", new { id=item.Innlegg_Id }, null) |

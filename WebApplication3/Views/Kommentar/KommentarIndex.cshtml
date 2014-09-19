@@ -4,7 +4,7 @@
     ViewBag.Title = "Kommentar";
 }
 
-<h2>KommentarIndex</h2>
+<h2>Kommentarer</h2>
 
 <p>
     @Html.ActionLink("Kommenter", "Create", new { id = ViewBag.innleggId })
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.innlegg.Innlegg_Tittel)
+            @Html.DisplayName("Tittel")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kommentar_Tittel)
+            @Html.DisplayName("Kommentar tittel")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kommentar_tekst)
+            @Html.DisplayName("Kommentar")
         </th>
         <th></th>
     </tr>
@@ -36,7 +36,8 @@
         </td>
         <td>
             @Html.ActionLink("Endre", "Edit", new { id=item.Kom_id }) |
-            @Html.ActionLink("Slett", "Delete", new { id=item.Kom_id })
+            @Html.ActionLink("Slett", "Delete", new { id=item.Kom_id }) |
+            @Html.ActionLink("Tilbake til innleggene", "InnleggIndex" , "Innlegg" , new {id = item.innlegg.Blogg_Id}, null)
         </td>
     </tr>
 }

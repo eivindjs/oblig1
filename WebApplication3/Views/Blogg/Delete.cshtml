@@ -1,0 +1,40 @@
+﻿@model WebApplication3.Models.Blogg
+
+@{
+    ViewBag.Title = "Slett";
+}
+
+<h2>Slett</h2>
+
+<h3>Sikker på at du vil slette hele bloggen?</h3>
+<div>
+    <h4>Blogg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Blogg")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blogg_tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Dato Opprettet")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dato)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett" class="btn btn-default" /> |
+            @Html.ActionLink("Tilbake", "Index")
+        </div>
+    }
+</div>

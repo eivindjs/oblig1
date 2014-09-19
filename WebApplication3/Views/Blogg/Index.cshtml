@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<WebApplication3.Models.Blogg>
 
 @{
-    ViewBag.Title = "Velkommen til bloggene";
+    ViewBag.Title = "Blogg";
 }
 
-<h2>Index</h2>
+<h2>Velkommen til bloggene</h2>
 
 <p>
     @Html.ActionLink("Lag ny", "Create")
@@ -15,7 +15,7 @@
             @Html.DisplayName("Blogg")
         </th>
         <th>
-            @Html.DisplayName("Dato")
+            @Html.DisplayName("Dato Opprettet")
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Blogg_tekst)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.dato.Date)
+            @Html.DisplayFor(modelItem => item.dato)
         </td>
         <td>
             @Html.ActionLink("Endre", "Edit", new { id=item.Blogg_Id }) |

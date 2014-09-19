@@ -10,14 +10,24 @@ namespace WebApplication3.Controllers
     {
         private DbModel db = new DbModel();
         // GET: Innlegg
-        private int Bloggid;
-        public ActionResult InnleggIndex(string id)
+        private BloggRepository bloggR;
+        public InnleggController()
         {
-            int _id = Convert.ToInt32(id);
-            Bloggid = _id;
-            var innlegg = db.Innlegger.Where(i => i.Blogg_Id == _id);
-            ViewBag.bloggId = id;
-            return View(innlegg);
+            bloggR = new BloggRepository();
+            
+        }
+        public ActionResult InnleggIndex(int id)
+        {
+            if (id == 0)
+            {
+                return RedirectToAction("Index", "Blogg");
+            }
+            else
+            {
+                var innlegg = db.Innlegger.Where(i => i.Blogg_Id == id);
+                ViewBag.bloggId = id;
+                return View(innlegg);
+            }
         }
 
         // GET: Innlegg/Details/5
@@ -27,10 +37,10 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Innlegg/Create
-        public ActionResult Opprett(string id)
+        public ActionResult Opprett(int id)
         {
             var innlegg = new Innlegg();
-            innlegg.Blogg_Id = Convert.ToInt32(id);
+            innlegg.Blogg_Id = id;
             return View(innlegg);
         }
 
@@ -42,17 +52,8 @@ namespace WebApplication3.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // TODO: Add insert logic here
-                    var post = new Innlegg
-                    {
-                        Innlegg_Tittel = innlegg.Innlegg_Tittel,
-                        Innlegg_Tekst = innlegg.Innlegg_Tekst,
-                        Dato = DateTime.Now,
-                        Blogg_Id = id
-
-                    };
-                    db.Innlegger.Add(post);
-                    db.SaveChanges();
+                    innlegg.Blogg_Id = id;
+                    bloggR.CreateInnlegg(innlegg);
                 }
                 return RedirectToAction("InnleggIndex", new { id = id });
             }
@@ -66,18 +67,23 @@ namespace WebApplication3.Controllers
         // GET: Innlegg/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.Innlegger.Find(id));
         }
 
         // POST: Innlegg/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Innlegg i)
         {
             try
             {
                 // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    if(bloggR.UpdateInnlegg(i))
+                        return RedirectToAction("InnleggIndex", new { id = i.Blogg_Id });
 
-                return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {
@@ -88,9 +94,7 @@ namespace WebApplication3.Controllers
         // GET: Innlegg/Delete/5
         public ActionResult Delete(int id)
         {
-            Innlegg innlegg = db.Innlegger.Find(id);
-            ViewBag.innleggId = innlegg.Blogg_Id;
-            return View(innlegg);
+            return View(bloggR.SeInnlegg(id));
         }
 
         // POST: Innlegg/Delete/5
@@ -99,18 +103,13 @@ namespace WebApplication3.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-               /* var inlegg = db.Innlegger.Where(i=> i.Innlegg_Id == id).FirstOrDefault();
-                db.Innlegger.Remove(inlegg);
-                db.SaveChanges(); */
+                int blogg_id = id;
                 if (ModelState.IsValid)
                 {
-                    innlegg = db.Innlegger.Find(id);
-                    db.Innlegger.Remove(innlegg);
-                    db.SaveChanges();
+                    if (bloggR.DeleteInnlegg(innlegg, id))
+                        return RedirectToAction("InnleggIndex", blogg_id); //Må har blogg_id for å komme tilbake til rett blogg
                 }
-                //må ha bloggid for å komme tilbake til rett plass
-                return RedirectToAction("InnleggIndex");
+                return View();
             }
             catch
             {

@@ -10,10 +10,15 @@ namespace WebApplication3.Controllers
 {
     public class BloggController : Controller
     {
-        //private Blogg blogg = new Blogg();
-        //private Innlegg innlegg = new Innlegg();
+
         private DbModel db = new DbModel();
-        // GET: Blogg
+        private BloggRepository bloggR;
+
+
+        public BloggController()
+        {
+            bloggR = new BloggRepository();
+        }
         public ActionResult Index()
         {
             var blogger = db.Blogger;
@@ -23,10 +28,7 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Details/5
         public ActionResult SeBlogg(int id)
         {
-            var inlegg = db.Innlegger.
-                Include("Blogger").
-                Where(b=> b.Blogg_Id == id);
-            return View(inlegg);
+            return View(bloggR.SeeBloggInnlegg(id));
         }
 
         // GET: Blogg/Create
@@ -43,16 +45,13 @@ namespace WebApplication3.Controllers
             try
             {
                 // TODO: Add insert logic here
-                  var blogg = new Blogg
-                  {
-                      Blogg_tekst = b.Blogg_tekst,
-                      dato = DateTime.Now
-                  };
 
-                  db.Blogger.Add(blogg);
-                  db.SaveChanges(); 
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    if (bloggR.CreateBlogg(b))
+                        return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {
@@ -63,18 +62,22 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.Blogger.Find(id));
         }
 
         // POST: Blogg/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Blogg b)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    if (bloggR.UpdateBlogg(b))
+                        return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
@@ -85,18 +88,22 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(bloggR.SeBloggen(id));
         }
 
         // POST: Blogg/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Blogg b, int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    if (bloggR.DeleteBlogg(b, id))
+                        return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {

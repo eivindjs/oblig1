@@ -131,6 +131,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blogg.cs" />
+    <Compile Include="Models\BloggRepository.cs" />
+    <Compile Include="Models\IBloggRepository.cs" />
     <Compile Include="Models\Innlegg.cs" />
     <Compile Include="Models\DbModel.cs" />
     <Compile Include="Models\Kommentar.cs" />
@@ -149,6 +151,9 @@
     <Content Include="Views\Kommentar\KommentarIndex.cshtml" />
     <Content Include="Views\Kommentar\Create.cshtml" />
     <Content Include="Views\Innlegg\Delete.cshtml" />
+    <Content Include="Views\Blogg\Edit.cshtml" />
+    <Content Include="Views\Blogg\Delete.cshtml" />
+    <Content Include="Views\Innlegg\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
