@@ -1,12 +1,14 @@
-﻿@model IEnumerable<WebApplication3.Models.Kommentar>
+﻿@model WebApplication3.Models.InnleggMedKommentarer
 
 @{
     ViewBag.Title = "Kommentar";
+    
 }
 
 <h2>Kommentarer</h2>
 
 <p>
+    
     @Html.ActionLink("Kommenter", "Create", new { id = ViewBag.innleggId })
 </p>
 <table class="table">
@@ -23,20 +25,16 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.kommentarer) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.innlegg.Innlegg_Tittel)
+            @Html.DisplayFor(modelTtem => item.innlegg.Innlegg_Tittel)
         </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kommentar_Tittel)
+            </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kommentar_Tittel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kommentar_tekst)
-        </td>
-        <td>
-            @Html.ActionLink("Endre", "Edit", new { id=item.Kom_id }) |
-            @Html.ActionLink("Slett", "Delete", new { id=item.Kom_id }) |
+         
             @Html.ActionLink("Tilbake til innleggene", "InnleggIndex" , "Innlegg" , new {id = item.innlegg.Blogg_Id}, null)
         </td>
     </tr>

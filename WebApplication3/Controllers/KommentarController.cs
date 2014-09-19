@@ -11,12 +11,19 @@ namespace WebApplication3.Controllers
     {
         // GET: Kommentar
         private DbModel db = new DbModel();
+        private BloggRepository blogR;
+
+        public KommentarController()
+        {
+            blogR = new BloggRepository();
+        }
         public ActionResult KommentarIndex(string id)
         {
             int _id = Convert.ToInt32(id);
-            var innlegg = db.Kommentarer.Where(i => i.Innlegg_Id == _id);
             ViewBag.innleggId = id;
-            return View(innlegg);
+
+            Innlegg ii = blogR.GetInnlegg(_id);
+            return View(new InnleggMedKommentarer(ii));
         }
 
         // GET: Kommentar/Details/5

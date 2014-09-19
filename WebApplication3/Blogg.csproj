@@ -148,13 +148,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Blogg\Create.cshtml" />
     <Content Include="Views\Innlegg\InnleggIndex.cshtml" />
-    <Content Include="Views\Innlegg\Opprett.cshtml" />
     <Content Include="Views\Kommentar\KommentarIndex.cshtml" />
     <Content Include="Views\Kommentar\Create.cshtml" />
     <Content Include="Views\Innlegg\Delete.cshtml" />
     <Content Include="Views\Blogg\Edit.cshtml" />
     <Content Include="Views\Blogg\Delete.cshtml" />
     <Content Include="Views\Innlegg\Edit.cshtml" />
+    <Content Include="Views\Innlegg\Opprett.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

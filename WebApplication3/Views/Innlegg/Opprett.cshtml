@@ -7,10 +7,10 @@
 <h2>Opprett</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Innlegg</h4>
         <hr />
@@ -31,17 +31,27 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.Label("Tillat kommentarer?", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.KommentarTillat)
+                    @Html.ValidationMessageFor(model => model.KommentarTillat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Opprett" class="btn btn-default" />
+                <input type="submit" value="Opprett Innlegg" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Tilbake", "InnleggIndex")
+    @Html.ActionLink("Tilbake", "InnleggIndex", new{id = Model.Blogg_Id})
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

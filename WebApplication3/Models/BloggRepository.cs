@@ -144,9 +144,15 @@ namespace WebApplication3.Models
                 return false;
             }
         }
+        public Innlegg GetInnlegg(int id)
+        {
+            return db.Innlegger.Include("Kommentarer").Where(i => i.Innlegg_Id == id).FirstOrDefault();
+        }
         public Innlegg GetInnleggMedKommentarer(int id)
         {
-            var innlegg = db.Innlegger.Where(i => i.Innlegg_Id == id).FirstOrDefault();
+            var innlegg = db.Innlegger
+                .Include("Kommentarer")
+                .Where(i => i.Innlegg_Id == id).FirstOrDefault();
             return innlegg;
         }
     }
