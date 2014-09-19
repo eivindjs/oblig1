@@ -144,5 +144,10 @@ namespace WebApplication3.Models
                 return false;
             }
         }
+        public Innlegg GetInnleggMedKommentarer(int id)
+        {
+            var innlegg = db.Innlegger.Where(i => i.Innlegg_Id == id).FirstOrDefault();
+            return innlegg;
+        }
     }
 }

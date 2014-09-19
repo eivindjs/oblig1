@@ -12,5 +12,6 @@ namespace WebApplication3.Models
         Innlegg SeeBloggInnlegg(int id);
         Innlegg SeInnlegg(int id);
         bool UpdateBlogg(Blogg blogg);
+        Innlegg GetInnleggMedKommentarer(int id);
     }
 }

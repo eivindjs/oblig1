@@ -135,6 +135,7 @@
     <Compile Include="Models\IBloggRepository.cs" />
     <Compile Include="Models\Innlegg.cs" />
     <Compile Include="Models\DbModel.cs" />
+    <Compile Include="Models\InnleggMedKommentarer.cs" />
     <Compile Include="Models\Kommentar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
