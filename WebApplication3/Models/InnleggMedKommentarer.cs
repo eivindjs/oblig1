@@ -13,7 +13,7 @@ namespace WebApplication3.Models
 
         public InnleggMedKommentarer(Innlegg innlegg)
         {
-            this.innlegg = innlegg;      
+            this.innlegg = innlegg;
             BloggR.GetInnleggMedKommentarer(innlegg.Innlegg_Id);
         }
     }

@@ -9,6 +9,7 @@ namespace BloggTest
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }

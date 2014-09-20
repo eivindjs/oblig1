@@ -1,21 +1,30 @@
 ﻿@model WebApplication3.Models.InnleggMedKommentarer
 
 @{
-    ViewBag.Title = "Kommentar";
+    ViewBag.Title = "Kommentarer";
     
 }
-
-<h2>Kommentarer</h2>
-
+<h4 class="text-right">@Html.DisplayName(Model.innlegg.Dato.ToLongDateString())</h4>
+<h2 class="text-center">@Html.DisplayName(Model.innlegg.Innlegg_Tittel)</h2>
+<p>
+<h4 class="text-center">@Html.DisplayName(Model.innlegg.Innlegg_Tekst)</h4>
+    </p>
+<br />
 <p>
     
-    @Html.ActionLink("Kommenter", "Create", new { id = ViewBag.innleggId })
-</p>
+   @if(Model.innlegg.KommentarTillat == true) 
+   { 
+       @Html.ActionLink("Kommenter", "Create", new { id = ViewBag.innleggId })
+   }
+   else 
+   {
+        <h3>Dette innlegget kan ikke kommenteres</h3>
+   }            
+    </p>
+<br />
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayName("Tittel")
-        </th>
+      
         <th>
             @Html.DisplayName("Kommentar tittel")
         </th>
@@ -25,19 +34,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.kommentarer) {
+@foreach (var item in Model.innlegg.kommentarer) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelTtem => item.innlegg.Innlegg_Tittel)
-        </td>
+        
             <td>
                 @Html.DisplayFor(modelItem => item.Kommentar_Tittel)
             </td>
         <td>
-         
-            @Html.ActionLink("Tilbake til innleggene", "InnleggIndex" , "Innlegg" , new {id = item.innlegg.Blogg_Id}, null)
+            @Html.DisplayFor(modelItem => item.Kommentar_tekst)
         </td>
+       <td>
+           @Html.ActionLink("Slett", "Delete", new { id = item.Kom_id })
+       </td>
     </tr>
 }
 
+
 </table>
+<br />
+@Html.ActionLink("Tilbake til innleggene", "InnleggIndex", "Innlegg", new { id = Model.innlegg.Blogg_Id }, null)
+
+

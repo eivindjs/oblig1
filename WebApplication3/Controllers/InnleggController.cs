@@ -103,11 +103,11 @@ namespace WebApplication3.Controllers
         {
             try
             {
-                int blogg_id = id;
+                int blogg_id = bloggR.SeInnlegg(id).Blogg_Id;
                 if (ModelState.IsValid)
                 {
                     if (bloggR.DeleteInnlegg(innlegg, id))
-                        return RedirectToAction("InnleggIndex", blogg_id); //Må har blogg_id for å komme tilbake til rett blogg
+                        return RedirectToAction("InnleggIndex", new { id = blogg_id }); //Må har blogg_id for å komme tilbake til rett blogg
                 }
                 return View();
             }

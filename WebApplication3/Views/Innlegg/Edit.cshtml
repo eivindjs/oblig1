@@ -28,12 +28,22 @@
 
         <div class="form-group">
             @Html.Label("Tekst", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
+              
                 @Html.EditorFor(model => model.Innlegg_Tekst, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Innlegg_Tekst, "", new { @class = "text-danger" })
             </div>
+            
         </div>
-
+        <div class="form-group">
+            @Html.Label("Tillat kommentarer?", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.KommentarTillat)
+                    @Html.ValidationMessageFor(model => model.KommentarTillat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Lagre Endringer" class="btn btn-default" />

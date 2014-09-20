@@ -11,7 +11,6 @@ namespace WebApplication3.Controllers
     public class BloggController : Controller
     {
 
-        private DbModel db = new DbModel();
         private BloggRepository bloggR;
 
 
@@ -21,8 +20,7 @@ namespace WebApplication3.Controllers
         }
         public ActionResult Index()
         {
-            var blogger = db.Blogger;
-            return View(blogger);
+            return View(bloggR.AlleBlogger());
         }
 
         // GET: Blogg/Details/5
@@ -62,7 +60,7 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(db.Blogger.Find(id));
+            return View(bloggR.SeBloggen(id));
         }
 
         // POST: Blogg/Edit/5

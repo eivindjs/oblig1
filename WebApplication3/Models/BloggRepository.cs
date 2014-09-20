@@ -41,7 +41,11 @@ namespace WebApplication3.Models
             var blogg = db.Blogger.Find(id);
             return blogg;
         }
-
+        public List<Blogg> AlleBlogger()
+        {
+            List<Blogg> blogg = db.Blogger.ToList();
+            return blogg;
+        }
         public bool DeleteBlogg(Blogg blogg, int id)
         {
             try 
@@ -143,6 +147,24 @@ namespace WebApplication3.Models
             {
                 return false;
             }
+        }
+        public bool DeleteKommentar(Kommentar kommentar, int id)
+        {
+            try
+            {
+                kommentar = db.Kommentarer.Find(id);
+                db.Kommentarer.Remove(kommentar);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public Kommentar SeKommentar(int id)
+        {
+            return db.Kommentarer.Find(id);
         }
         public Innlegg GetInnlegg(int id)
         {

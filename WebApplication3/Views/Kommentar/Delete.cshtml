@@ -1,0 +1,48 @@
+﻿@model WebApplication3.Models.Kommentar
+
+@{
+    ViewBag.Title = "Slett";
+}
+
+<h2>Slett</h2>
+
+<h3>Sikker på at du vil slette kommentaren?</h3>
+<div>
+    <h4>Kommentar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Tittel på innlegg")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.innlegg.Innlegg_Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Kommentar tittel")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kommentar_Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Kommentar")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kommentar_tekst)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett Kommentar" class="btn btn-default" /> |
+            @Html.ActionLink("Tilbake", "KommentarIndex", new { id = Model.Innlegg_Id })
+        </div>
+    }
+</div>

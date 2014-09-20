@@ -48,16 +48,12 @@ namespace WebApplication3.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var komment = new Kommentar
-                    {
-                        Kommentar_Tittel = kommentar.Kommentar_Tittel,
-                        Kommentar_tekst = kommentar.Kommentar_tekst,
-                        Innlegg_Id = id
-                    };
-                    db.Kommentarer.Add(komment);
-                    db.SaveChanges();
+                    kommentar.Innlegg_Id = id;
+                    if(blogR.CreateKommentar(kommentar))
+                        return RedirectToAction("KommentarIndex", new { id = id });
+
                 }
-                return RedirectToAction("KommentarIndex", new { id = id });
+                return View();
             }
             catch
             {
@@ -90,18 +86,25 @@ namespace WebApplication3.Controllers
         // GET: Kommentar/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(blogR.SeKommentar(id));
         }
 
         // POST: Kommentar/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Kommentar kommentar)
         {
             try
             {
+                int _id = blogR.SeKommentar(id).Innlegg_Id;
                 // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    if (blogR.DeleteKommentar(kommentar, id))
+                        return RedirectToAction("KommentarIndex", new { id = _id });
 
-                return RedirectToAction("Index");
+                }
+
+                return View();
             }
             catch
             {

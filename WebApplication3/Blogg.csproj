@@ -155,6 +155,7 @@
     <Content Include="Views\Blogg\Delete.cshtml" />
     <Content Include="Views\Innlegg\Edit.cshtml" />
     <Content Include="Views\Innlegg\Opprett.cshtml" />
+    <Content Include="Views\Kommentar\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

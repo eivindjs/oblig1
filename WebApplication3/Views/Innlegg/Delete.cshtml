@@ -50,7 +50,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Slett Innlegg" class="btn btn-default" /> |
-            @Html.ActionLink("Tilbake", "InnleggIndex", new { id = ViewBag.innleggId })
+            @Html.ActionLink("Tilbake", "InnleggIndex", new { id = Model.Blogg_Id })
         </div>
     }
 </div>

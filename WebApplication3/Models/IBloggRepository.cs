@@ -8,6 +8,7 @@ namespace WebApplication3.Models
         bool CreateKommentar(Kommentar kommentar);
         bool DeleteBlogg(Blogg blogg, int id);
         bool DeleteInnlegg(Innlegg innlegg, int id);
+        bool DeleteKommentar(Kommentar kommentar, int id);
         Blogg SeBloggen(int id);
         Innlegg SeeBloggInnlegg(int id);
         Innlegg SeInnlegg(int id);
