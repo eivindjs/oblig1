@@ -11,7 +11,7 @@ namespace WebApplication3.Controllers
     public class BloggController : Controller
     {
 
-        private BloggRepository bloggR;
+
         private IBloggRepository _repository;
 
         public BloggController()

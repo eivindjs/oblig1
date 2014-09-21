@@ -59,3 +59,4 @@ C:\Users\Eivind\Webapp\Oblig1\WebApplication3\obj\Debug\WebApplication3.Migratio
 C:\Users\Eivind\Webapp\Oblig1\WebApplication3\obj\Debug\Blogg.csproj.GenerateResource.Cache
 C:\Users\Eivind\Webapp\Oblig1\WebApplication3\obj\Debug\WebApplication3.dll
 C:\Users\Eivind\Webapp\Oblig1\WebApplication3\obj\Debug\WebApplication3.pdb
+C:\Users\Eivind\Webapp\Oblig1\WebApplication3\obj\Debug\Blogg.csprojResolveAssemblyReference.cache

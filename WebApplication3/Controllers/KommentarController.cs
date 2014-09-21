@@ -11,11 +11,15 @@ namespace WebApplication3.Controllers
     {
         // GET: Kommentar
         private DbModel db = new DbModel();
-        private BloggRepository blogR;
+        private IBloggRepository blogR;
 
         public KommentarController()
         {
             blogR = new BloggRepository();
+        }
+        public KommentarController(IBloggRepository repost)
+        {
+            blogR = repost;
         }
         public ActionResult KommentarIndex(string id)
         {
