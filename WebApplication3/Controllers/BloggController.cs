@@ -12,21 +12,26 @@ namespace WebApplication3.Controllers
     {
 
         private BloggRepository bloggR;
-
+        private IBloggRepository _repository;
 
         public BloggController()
         {
-            bloggR = new BloggRepository();
+            _repository = new BloggRepository();
+        }
+        public BloggController(IBloggRepository repository)
+        {
+            _repository = repository;
         }
         public ActionResult Index()
         {
-            return View(bloggR.AlleBlogger());
+            var blogger = _repository.AlleBlogger();
+            return View(blogger);
         }
 
         // GET: Blogg/Details/5
         public ActionResult SeBlogg(int id)
         {
-            return View(bloggR.SeeBloggInnlegg(id));
+            return View(_repository.SeeBloggInnlegg(id));
         }
 
         // GET: Blogg/Create
@@ -46,7 +51,7 @@ namespace WebApplication3.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    if (bloggR.CreateBlogg(b))
+                    if (_repository.CreateBlogg(b))
                         return RedirectToAction("Index");
                 }
                 return View();
@@ -60,7 +65,7 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(bloggR.SeBloggen(id));
+            return View(_repository.SeBloggen(id));
         }
 
         // POST: Blogg/Edit/5
@@ -71,7 +76,7 @@ namespace WebApplication3.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (bloggR.UpdateBlogg(b))
+                    if (_repository.UpdateBlogg(b))
                         return RedirectToAction("Index");
                 }
 
@@ -86,7 +91,7 @@ namespace WebApplication3.Controllers
         // GET: Blogg/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(bloggR.SeBloggen(id));
+            return View(_repository.SeBloggen(id));
         }
 
         // POST: Blogg/Delete/5
@@ -98,7 +103,7 @@ namespace WebApplication3.Controllers
                 // TODO: Add delete logic here
                 if (ModelState.IsValid)
                 {
-                    if (bloggR.DeleteBlogg(b, id))
+                    if (_repository.DeleteBlogg(b, id))
                         return RedirectToAction("Index");
                 }
                 return View();

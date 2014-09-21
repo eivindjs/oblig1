@@ -6,7 +6,7 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Models
 {
-    public class BloggRepository : WebApplication3.Models.IBloggRepository
+    public class BloggRepository : IBloggRepository
     {
         private DbModel db;
 
@@ -41,10 +41,9 @@ namespace WebApplication3.Models
             var blogg = db.Blogger.Find(id);
             return blogg;
         }
-        public List<Blogg> AlleBlogger()
+        public IEnumerable<Blogg> AlleBlogger()
         {
-            List<Blogg> blogg = db.Blogger.ToList();
-            return blogg;
+            return db.Blogger;
         }
         public bool DeleteBlogg(Blogg blogg, int id)
         {
