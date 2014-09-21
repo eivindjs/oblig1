@@ -98,8 +98,7 @@
   <ItemGroup>
     <Compile Include="BloggControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="KommentarLukketTest.cs" />
-    <Compile Include="KommentarÅpenTest.cs" />
+    <Compile Include="KommentarControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,24 +10,22 @@ namespace WebApplication3.Controllers
     public class KommentarController : Controller
     {
         // GET: Kommentar
-        private DbModel db = new DbModel();
         private IBloggRepository blogR;
 
         public KommentarController()
         {
             blogR = new BloggRepository();
         }
-        public KommentarController(IBloggRepository repost)
+        public KommentarController(IBloggRepository repos)
         {
-            blogR = repost;
+            blogR = repos;
         }
-        public ActionResult KommentarIndex(string id)
+        public ActionResult KommentarIndex(int id)
         {
-            int _id = Convert.ToInt32(id);
             ViewBag.innleggId = id;
 
-            Innlegg ii = blogR.GetInnlegg(_id);
-            return View(new InnleggMedKommentarer(ii));
+            Innlegg innlegg = blogR.GetInnlegg(id);
+            return View(new InnleggMedKommentarer(innlegg));
         }
 
         // GET: Kommentar/Details/5
