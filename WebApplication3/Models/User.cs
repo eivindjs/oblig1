@@ -7,17 +7,17 @@ using System.Web;
 
 namespace WebApplication3.Models
 {
-    [Table("Blogger")]
-    public class Blogg
+    [Table("Users")]
+    public class User
     {
         [Key]
-        public int Blogg_Id { get; set; }
-        public string Blogg_tekst { get; set; }
-        public DateTime dato { get; set; }
-
         public int User_id { get; set; }
-        public User User { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
 
-       public virtual List<Innlegg> Innlegger { get; set; }
+       
+        public virtual List<Blogg> Blogger { get; set; }
+
+
     }
 }

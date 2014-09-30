@@ -97,3 +97,4 @@ C:\Users\Eivind\WebApp2\Oblig1\WebApplication3\obj\Debug\WebApplication3.Migrati
 C:\Users\Eivind\WebApp2\Oblig1\WebApplication3\obj\Debug\Blogg.csproj.GenerateResource.Cache
 C:\Users\Eivind\WebApp2\Oblig1\WebApplication3\obj\Debug\WebApplication3.dll
 C:\Users\Eivind\WebApp2\Oblig1\WebApplication3\obj\Debug\WebApplication3.pdb
+C:\Users\Eivind\WebApp2\Oblig1\WebApplication3\obj\Debug\WebApplication3.Migrations.oblig2.resources
