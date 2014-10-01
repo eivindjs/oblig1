@@ -150,6 +150,10 @@
     <Compile Include="Migrations\201409180623368_Oblig1.Designer.cs">
       <DependentUpon>201409180623368_Oblig1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409301602476_oblig2.cs" />
+    <Compile Include="Migrations\201409301602476_oblig2.Designer.cs">
+      <DependentUpon>201409301602476_oblig2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blogg.cs" />
     <Compile Include="Models\BloggRepository.cs" />
@@ -158,6 +162,7 @@
     <Compile Include="Models\DbModel.cs" />
     <Compile Include="Models\InnleggMedKommentarer.cs" />
     <Compile Include="Models\Kommentar.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409180623368_Oblig1.resx">
       <DependentUpon>201409180623368_Oblig1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409301602476_oblig2.resx">
+      <DependentUpon>201409301602476_oblig2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
